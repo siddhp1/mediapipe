@@ -76,6 +76,11 @@ azel-${BAZEL_VERSION}-installer-linux-x86_64.sh" && \
     /bazel/installer.sh  && \
     rm -f /bazel/installer.sh
 
+# Install basilisk
+RUN curl -Lo /usr/local/bin/bazelisk https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64 && \
+    chmod +x /usr/local/bin/bazelisk && \
+    ln -sf /usr/local/bin/bazelisk /usr/local/bin/bazel
+
 COPY . /mediapipe/
 
 # If we want the docker image to contain the pre-built object_detection_offline_demo binary, do the following
